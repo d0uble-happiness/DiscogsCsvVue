@@ -1,60 +1,46 @@
 <template>
-<label>Array:</label>
-
-<div class="greetings">
-    <input type="file" id="myFile" name="filename" @change="parseCsvToArray">
-    <input type="submit">
+  <div>
+    <label>Array:</label>
+      <p v-for="row of parsedData">
+        {{ row }}
+      </p>
   </div>
-  
 </template>
 
 <script lang="ts">
 
+import { defineComponent } from 'vue'
 import Papa from 'papaparse';
+import ROW_NAMES from './RowNames.vue'
 
-defineProps<{
-  msg: string
-}>()
-
-// async function fileChange(event) {
-
-//   const file = event.target.files[0];
-//   Papa.parse(file, {
-//     header: true,
-//     dynamicTyping: true,
-//     complete: (result) => {
-//       console.log(JSON.stringify(result.data, null, 2));
-//     }
-//   })
-// }
-
-export default {
-    name: 'ParseCsvToArray',
-    components: {
-    },
-    methods: {
-        parseCsvToArray
-    },
-    data() {
-        return {
-            releaseIdArray: []
-        }
+export default defineComponent({
+  name: 'ParseCsvToArray',
+  props: {
+    file: File
+  },
+  data() {
+    return {
+      parsedData: [] as any[],
+      rowNames: ROW_NAMES
     }
-};
-
-async function parseCsvToArray(event) {
-    const file = event.target.files[0];
-    var releaseIdArray = [];
-    Papa.parse(file, {
-        header: true,
-        download: true,
-        dynamicTyping: true,
-        complete: function (results) {
-            results.data.push(releaseIdArray)
+  },
+  methods: {
+    parseCsvToArray(file: File){
+      Papa.parse(file, {
+        header: false,
+        complete: (results: Papa.ParseResult<any>) => {
+          console.log('Parsed: ', results.data);
+          this.parsedData = results.data;
         }
-    });
-    console.log(releaseIdArray)
-}
+      });
+    }
+  },
+  mounted() {
+    if(this.file){
+      this.parseCsvToArray(this.file);
+    }
+  },
+});
 
 </script>
 

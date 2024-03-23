@@ -1,32 +1,32 @@
 <template>
-
     <label>File:</label>
-    <input type="file">
+    <input type="file" @change="chooseFiles">
     
 </template>
 
 <script lang="ts">
 
-export default {
-    name: 'FileUpload',
-    components: {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'FileUpload',
+  data() {
+    return {
+      file: ""
+    }
+  },
+  methods: {
+    chooseFiles(event) {
+      console.log("chooseFiles");
+      const file = event.target.files[0];
+      console.log(file);
+      this.$emit("file", file);
     },
-    data() {
-      return {
-        file: ""
-      }
-    },
-    methods: {
-    chooseFiles
   },
   mounted() {
     console.log("mounted");
-  }
-}; 
-
-function chooseFiles() {
-  document.getElementById("file").click();
-}
+  },
+});
 
 </script>
 

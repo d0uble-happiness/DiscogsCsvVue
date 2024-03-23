@@ -26,7 +26,7 @@ export default {
   },
     data() {
         return {
-          rowNames: ROW_NAMES
+          // download
         }
     }
 };
