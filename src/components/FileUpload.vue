@@ -17,14 +17,16 @@ export default {
       }
     },
     methods: {
-    chooseFiles() {
-      document.getElementById("file").click();
-    },
+    chooseFiles
   },
   mounted() {
     console.log("mounted");
   }
 }; 
+
+function chooseFiles() {
+  document.getElementById("file").click();
+}
 
 </script>
 

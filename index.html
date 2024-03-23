@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DiscogsCSV</title>
-  </head>
-  <body>
-    <div id="app">
 
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiscogsCSV</title>
+</head>
+
+<body>
+  <div id="app">
     <label for="input-id">
-      <input id="input-id" type="file"/>
+      <input id="fileInput" name="filename" type="file" />
     </label>
-      <!-- <button @click="chooseFiles()">Choose</button>
-    </div>
-    <input type="file" name="filename" id="fileInput"> -->
-  </body>
+    <button @click="chooseFiles()">Choose</button>
+  </div>
+</body>
+
 </html>

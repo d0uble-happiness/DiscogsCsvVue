@@ -1,13 +1,32 @@
 <template>
 <label>Array:</label>
+
+<div class="greetings">
+    <input type="file" id="myFile" name="filename" @change="parseCsvToArray">
+    <input type="submit">
+  </div>
+  
 </template>
 
 <script lang="ts">
 
 import Papa from 'papaparse';
-import ROW_NAMES from './RowNames.vue'
 
-const moduleInstance: any = Papa;
+defineProps<{
+  msg: string
+}>()
+
+// async function fileChange(event) {
+
+//   const file = event.target.files[0];
+//   Papa.parse(file, {
+//     header: true,
+//     dynamicTyping: true,
+//     complete: (result) => {
+//       console.log(JSON.stringify(result.data, null, 2));
+//     }
+//   })
+// }
 
 export default {
     name: 'ParseCsvToArray',
@@ -18,26 +37,24 @@ export default {
     },
     data() {
         return {
-            rowNames: ROW_NAMES
+            releaseIdArray: []
         }
     }
 };
 
-function parseCsvToArray(url: any, file: (arg0: any) => void){
-    Papa.parse(url, {
-        complete: function(results: { data: any[]; }) {
-            file(results.data[0]);
+async function parseCsvToArray(event) {
+    const file = event.target.files[0];
+    var releaseIdArray = [];
+    Papa.parse(file, {
+        header: true,
+        download: true,
+        dynamicTyping: true,
+        complete: function (results) {
+            results.data.push(releaseIdArray)
         }
     });
+    console.log(releaseIdArray)
 }
-
-function doStuff(data: any[]){
-    newArray=data;
-    console.log(newArray);
-}
-
-var newArray=[];
-moduleInstance(document.getElementById("file"), doStuff);
 
 </script>
 

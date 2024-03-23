@@ -4,8 +4,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import VuePapaParse from 'vue-papa-parse'
 
-createApp(App).mount('#app')
+const app = createApp(App)
 
-App.use(VuePapaParse)
+app.use(VuePapaParse)
+app.mount('#app')
 // App.use(VueCsvImportPlugin)
 // import {VueCsvImportPlugin} from "vue-csv-import";

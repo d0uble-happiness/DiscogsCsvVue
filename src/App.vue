@@ -5,6 +5,9 @@
     <ParseCsvToArray />
     <ProcessReleaseData /> 
   </main>
+
+  <button @click="changeVal">Change Text</button>
+  <p ref="pEl">This is the initial text</p>
 </template>
 
 <script lang="ts">
@@ -22,6 +25,9 @@ export default {
   },
 
   methods: {
+    changeVal() {
+        this.$refs.pEl.innerHTML = "Hello!";
+      }
   }
 };  
 </script>
