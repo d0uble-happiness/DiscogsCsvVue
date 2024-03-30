@@ -8,12 +8,12 @@ import { processReleaseData } from './ProcessReleaseData.vue';
 // import { defineComponent } from 'vue'
 // import { defineAsyncComponent } from 'vue'
 
-export default  ({
+export default  {
   name: 'FetchRelease',
   methods: {
     fetchRelease
   }
-});
+}
 
 const db = new DiscogsClient().database();
 
