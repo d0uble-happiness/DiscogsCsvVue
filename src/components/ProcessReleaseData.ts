@@ -1,5 +1,12 @@
 import { type GetReleaseResponse } from '@lionralfs/discogs-client/types/types';
 
+export default  {
+  name: 'ProcessReleaseData',
+  methods: {
+    processReleaseData
+  }
+}
+
 export function processReleaseData(releaseId: string, data: GetReleaseResponse) {
 
   const { country = 'Unknown', genres = [], styles = [], year = 'Unknown' } = data;
