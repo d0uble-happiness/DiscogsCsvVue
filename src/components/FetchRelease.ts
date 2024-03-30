@@ -1,5 +1,5 @@
 import { DiscogsClient } from '@lionralfs/discogs-client';
-import { processReleaseData } from './ProcessReleaseData'
+import { processReleaseData } from './ProcessReleaseData';
 
 export default  ({
   name: 'FetchRelease',

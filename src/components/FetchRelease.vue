@@ -4,8 +4,7 @@
 
 <script lang="ts">
 import { DiscogsClient } from '@lionralfs/discogs-client';
-// import ProcessReleaseData from './ProcessReleaseData.vue'
-import { processReleaseData } from './ProcessReleaseData'
+import { processReleaseData } from './ProcessReleaseData.vue';
 // import { defineComponent } from 'vue'
 // import { defineAsyncComponent } from 'vue'
 
