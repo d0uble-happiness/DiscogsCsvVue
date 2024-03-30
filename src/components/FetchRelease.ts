@@ -1,13 +1,5 @@
-<template>
-  <label>Fetch release</label>
-</template>
-
-<script lang="ts">
 import { DiscogsClient } from '@lionralfs/discogs-client';
-// import ProcessReleaseData from './ProcessReleaseData.vue'
 import { processReleaseData } from './ProcessReleaseData'
-// import { defineComponent } from 'vue'
-// import { defineAsyncComponent } from 'vue'
 
 export default  ({
   name: 'FetchRelease',
@@ -17,14 +9,6 @@ export default  ({
 });
 
 const db = new DiscogsClient().database();
-
-// const AsyncComp = defineAsyncComponent(() => {
-//   return new Promise((resolve, reject) => {
-//     // ...load component from server
-//     import('./ProcessReleaseData.vue'),
-//     resolve(processReleaseData(releaseId, data))
-//   })
-// })
 
 async function fetchRelease(releaseId: string): Promise<any[] | { error: string }> {
   try {
@@ -36,7 +20,3 @@ async function fetchRelease(releaseId: string): Promise<any[] | { error: string 
     };
   }
 }
-
-</script>
-
-<style></style>
