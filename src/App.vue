@@ -6,6 +6,12 @@
     <ProcessReleaseData v-if="formattedData" :data="formattedData" />
     <DownloadCSV v-if="csvContent" :data="csvContent" />
   </div>
+
+  <div>
+    <p v-for="row of formattedData" v-bind:key="row.id">
+      {{ row }}
+    </p>
+  </div>
 </template>
 
 <script lang="ts">
