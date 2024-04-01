@@ -2,9 +2,9 @@
   <div>
     <FileUpload @file="setFile" />
     <ParseCsvToArray v-if="file" :file="file" />
-    <ProcessReleaseData />
-    <FetchRelease />
-    <DownloadCSV />
+    <FetchRelease v-if="data" :data="data" />
+    <ProcessReleaseData v-if="formattedData" :data="formattedData" />
+    <DownloadCSV v-if="csvContent" :data="csvContent" />
   </div>
 </template>
 
@@ -21,8 +21,8 @@ export default defineComponent({
   components: {
     FileUpload,
     ParseCsvToArray,
-    ProcessReleaseData,
     FetchRelease,
+    ProcessReleaseData,
     DownloadCSV
   },
   data() {
@@ -39,6 +39,7 @@ export default defineComponent({
   mounted() {
     console.log("mounted");
   },
+  props: ['data', 'formattedData', 'csvContent']
 });
 </script>
 
